@@ -15,7 +15,7 @@ public class ConnectDB {
     //contructor của hàm kết nối ConnectDB
     public ConnectDB() {
         super();
-        url = "jdbc:sqlserver://localhost:1433;databaseName=POLY_EXAM;user=sa;password=sa";
+        url = "jdbc:sqlserver://localhost:1433;databaseName=POLY_EXAM;user=sa;password=123";
 
     }
 

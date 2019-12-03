@@ -234,7 +234,16 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
+
+        Lecturers_Statistics_Form Report = new Lecturers_Statistics_Form();
+        jDesktopPane1.add(Report);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = Report.getSize();
+        Report.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        Report.setVisible(true);
+        Report.show();
+
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
