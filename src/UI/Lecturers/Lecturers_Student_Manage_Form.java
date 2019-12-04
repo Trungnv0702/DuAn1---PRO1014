@@ -14,7 +14,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
         this.setTitle("Quản lý sinh viên");
     }
 
-    String ReMail = "\\w+@fpt.edu.vn";
+    String ReMail = "\\w+@+\\w+(\\.\\w+){1,2}";
     ConnectDB connect = new ConnectDB();
     int row = -1;
 
@@ -37,56 +37,142 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
 
     }
 
-    public void checkForm() {
+    public boolean checkFormAddNew() {
         try {
             if (txt_IDStudent.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống mã sinh viên!");
-                return;
+                return false;
+            }
+            if (txt_IDStudent.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng mã sinh viên!");
+                return false;
             }
             if (txt_FullName.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống tên!");
-                return;
+                return false;
+            }
+            if (txt_FullName.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng tên sinh viên!");
+                return false;
             }
             if (txt_Email.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Không để trống email/tên đăn nhập!");
-                return;
+                JOptionPane.showMessageDialog(this, "Không để trống email/tên đăng nhập!");
+                return false;
             }
-            if (!txt_Email.getText().equals(ReMail)) {
+            if (!txt_Email.getText().matches(ReMail)) {
                 JOptionPane.showMessageDialog(this, "Không đúng định dạng email sinh viên!");
-                return;
+                return false;
             }
             if (txt_Password.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống mật khẩu!");
-                return;
+                return false;
+            }
+            if (txt_Password.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng mật khẩu!");
+                return false;
             }
             if (txt_SchoolYear.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống khóa!");
-                return;
+                return false;
+            }
+            if (txt_SchoolYear.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng khóa!");
+                return false;
             }
             if (txt_Major.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống ngành!");
-                return;
+                return false;
+            }
+            if (txt_Major.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng mật khẩu!");
+                return false;
             }
             if (txt_Address.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống địa chỉ!");
-                return;
+                return false;
+            }
+            if (txt_Address.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng địa ch!");
+                return false;
             }
             for (int i = 0; i < tab_View.getRowCount(); i++) {
                 if (txt_IDStudent.getText().equalsIgnoreCase(tab_View.getValueAt(i, 0).toString())) {
                     JOptionPane.showMessageDialog(this, "Mã sinh viên đã tồn tại!");
-                    return;
+                    return false;
                 }
             }
             for (int i = 0; i < tab_View.getRowCount(); i++) {
                 if (txt_Email.getText().equalsIgnoreCase(tab_View.getValueAt(i, 0).toString())) {
                     JOptionPane.showMessageDialog(this, "Email đã tồn tại!");
-                    return;
+                    return false;
                 }
             }
-
+            if (!txt_IDStudent.getText().equals("") || !txt_FullName.getText().equals("") || !txt_Email.getText().equals("") || txt_Email.getText().matches(ReMail)
+                    || !txt_Password.getText().equals("") || !txt_SchoolYear.getText().equals("") || !txt_Major.getText().equals("") || !txt_Address.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Thêm thành công !");
+            } else {
+                JOptionPane.showMessageDialog(this, "Thất bại !");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
+        return true;
+    }
+
+    public boolean checkFormUpdate() {
+        try {
+            if (txt_FullName.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống tên!");
+                return false;
+            }
+            if (txt_FullName.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng tên sinh viên!");
+                return false;
+            }
+            if (txt_Email.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống email/tên đăng nhập!");
+                return false;
+            }
+            if (!txt_Email.getText().matches(ReMail)) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng email sinh viên!");
+                return false;
+            }
+            if (txt_Password.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống mật khẩu!");
+                return false;
+            }
+            if (txt_Password.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng mật khẩu!");
+                return false;
+            }
+            if (txt_SchoolYear.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống khóa!");
+                return false;
+            }
+            if (txt_SchoolYear.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng khóa!");
+                return false;
+            }
+            if (txt_Major.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống ngành!");
+                return false;
+            }
+            if (txt_Major.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng mật khẩu!");
+                return false;
+            }
+            if (txt_Address.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống địa chỉ!");
+                return false;
+            }
+            if (txt_Address.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng địa ch!");
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+        return true;
     }
 
     public void showDetail(int row) {
@@ -111,7 +197,6 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Lỗi load combobox" + e);
         }
-
     }
 
     public void loadToTable() {
@@ -354,16 +439,15 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_FullNameActionPerformed
 
     private void btn_AddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddnewActionPerformed
-        String sql = "exec sp_addSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "','Sinhvien'";
-        try {
-            this.checkForm();
-            connect.UpdateSQL(sql);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Thêm sinh viên thất bại!" + e);
+        if (this.checkFormAddNew()) {
+            try {
+                String sql = "exec sp_addSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "','Sinhvien'";
+                connect.UpdateSQL(sql);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Thêm sinh viên thất bại!" + e);
+            }
         }
         this.loadToTable();
-
-
     }//GEN-LAST:event_btn_AddnewActionPerformed
 
     private void txt_IDStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IDStudentActionPerformed
@@ -386,27 +470,25 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tab_ViewMouseClicked
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
-
         if (txt_IDStudent.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Chọn một đối tượng để xóa!");
             return;
         }
         this.deleteStudent();
-
         this.loadToTable();
-
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
     private void btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateActionPerformed
-        String sql = "exec sp_updateSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "'";
-        try {
-            this.checkForm();
-            connect.UpdateSQL(sql);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi sửa sinh viên: " + e);
+        if (this.checkFormUpdate()) {
+            String sql = "exec sp_updateSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "'";
+            try {
+                connect.UpdateSQL(sql);
+                JOptionPane.showMessageDialog(this, "Chỉnh sửa thành công!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Lỗi sửa sinh viên: " + e);
+            }
         }
         this.loadToTable();
-
     }//GEN-LAST:event_btn_UpdateActionPerformed
 
 

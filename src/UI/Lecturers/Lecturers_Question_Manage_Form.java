@@ -17,31 +17,52 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
     ConnectDB connet = new ConnectDB();
     ResultSet rs;
 
-    public void checkForm() {
+    public boolean checkForm() {
         try {
+            if (txt_ContentQuestion.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống câu hỏi!");
+                return false;
+            }
+            if (txt_ContentQuestion.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng câu hỏi!");
+                return false;
+            }
             if (txt_Answer1.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Không để trống đáp án!");
-                return;
+                JOptionPane.showMessageDialog(this, "Không để trống đáp án 1!");
+                return false;
+            }
+            if (txt_Answer1.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng đáp án!");
+                return false;
             }
             if (txt_Answer2.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Không để trống đáp án!");
-                return;
+                JOptionPane.showMessageDialog(this, "Không để trống đáp án 2!");
+                return false;
+            }
+            if (txt_Answer2.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng đáp án!");
+                return false;
             }
             if (txt_Answer3.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Không để trống đáp án!");
-                return;
+                JOptionPane.showMessageDialog(this, "Không để trống đáp án 3!");
+                return false;
+            }
+            if (txt_Answer3.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng đáp án!");
+                return false;
             }
             if (txt_CorrectAnswer.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Không để trống đáp án!");
-                return;
+                JOptionPane.showMessageDialog(this, "Không để trống đáp án 4!");
+                return false;
             }
-            if (txt_ContentQuestion.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Không để trống câu hỏi!");
-                return;
+            if (txt_CorrectAnswer.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng đáp án!");
+                return false;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
+        return true;
     }
 
     public void loadDatatotable() {
@@ -311,14 +332,14 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddQuestionActionPerformed
-        try {
-            this.checkForm();
-            String sql = "exec sp_addCauhoi N'" + cbb_Subject.getSelectedItem().toString() + "' ,N'" + txt_ContentQuestion.getText() + "' , N'" + txt_Answer1.getText() + "',N'" + txt_Answer2.getText() + "',N'" + txt_Answer3.getText() + "',N'" + txt_CorrectAnswer.getText() + "'";
-            connet.UpdateSQL(sql);
-            this.loadDatatotable();
-        } catch (Exception e) {
+        if (this.checkForm()) {
+            try {
+                String sql = "exec sp_addCauhoi N'" + cbb_Subject.getSelectedItem().toString() + "' ,N'" + txt_ContentQuestion.getText() + "' , N'" + txt_Answer1.getText() + "',N'" + txt_Answer2.getText() + "',N'" + txt_Answer3.getText() + "',N'" + txt_CorrectAnswer.getText() + "'";
+                connet.UpdateSQL(sql);
+                this.loadDatatotable();
+            } catch (Exception e) {
+            }
         }
-
     }//GEN-LAST:event_btn_AddQuestionActionPerformed
 
     private void btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateActionPerformed

@@ -24,25 +24,34 @@ public class Lecturers_Class_Management_Form extends javax.swing.JInternalFrame 
         this.loadToTable();
     }
 
-    public void checkForm() {
+    public boolean checkForm() {
         try {
             if (txt_malop.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "không để trống mã lớp!");
-                return;
+                return false;
+            }
+            if (txt_malop.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng mã lớp!");
+                return false;
             }
             if (txt_tenlop.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "không để trống tên lớp!");
-                return;
+                return false;
+            }
+            if (txt_tenlop.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng tên lớp!");
+                return false;
             }
             for (int i = 0; i < tbl_view.getRowCount(); i++) {
                 if (txt_malop.getText().equalsIgnoreCase(tbl_view.getValueAt(i, 0).toString())) {
                     JOptionPane.showMessageDialog(this, "mã môn đã tồn tại, hãy chọn mã lớp khác!");
-                    return;
+                    return false;
                 }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
+        return true;
     }
 
     public void loadToTable() {
@@ -167,12 +176,13 @@ public class Lecturers_Class_Management_Form extends javax.swing.JInternalFrame 
 
     private void btn_addnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addnewActionPerformed
         // TODO add your handling code here:
-        try {
-            this.checkForm();
-            String sql = "exec sp_addLop N'" + txt_malop.getText() + "',N'" + txt_tenlop.getText() + "'";
-            connect.UpdateSQL(sql);
-            loadToTable();
-        } catch (Exception e) {
+        if (this.checkForm()) {
+            try {
+                String sql = "exec sp_addLop N'" + txt_malop.getText() + "',N'" + txt_tenlop.getText() + "'";
+                connect.UpdateSQL(sql);
+                loadToTable();
+            } catch (Exception e) {
+            }
         }
     }//GEN-LAST:event_btn_addnewActionPerformed
 

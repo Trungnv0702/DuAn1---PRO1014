@@ -12,25 +12,34 @@ public class Lecturers_Subject_Management_Form extends javax.swing.JInternalFram
         this.loadToTable();
     }
 
-    public void checkForm() {
+    public boolean checkForm() {
         try {
             if (txt_IDSubject.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "không để trống mã môn!");
-                return;
+                return false;
+            }
+            if (txt_IDSubject.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng mã môn!");
+                return false;
             }
             if (txt_SubjectName.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "không để trống tên môn!");
-                return;
+                return false;
+            }
+            if (txt_SubjectName.getText().matches("[ ]+")) {
+                JOptionPane.showMessageDialog(this, "Không đúng định dạng tên môn!");
+                return false;
             }
             for (int i = 0; i < tbl_view.getRowCount(); i++) {
                 if (txt_IDSubject.getText().equalsIgnoreCase(tbl_view.getValueAt(i, 0).toString())) {
                     JOptionPane.showMessageDialog(this, "mã môn đã tồn tại, hãy chọn mã môn khác!");
-                    return;
+                    return false;
                 }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
+        return true;
     }
 
     public void loadToTable() {
@@ -157,13 +166,14 @@ public class Lecturers_Subject_Management_Form extends javax.swing.JInternalFram
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddNewActionPerformed
-        try {
-            this.checkForm();
-            String sql = "exec sp_addMon N'" + txt_IDSubject.getText() + "', N'" + txt_SubjectName.getText() + "' ";
-            connect.UpdateSQL(sql);
-            loadToTable();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Thêm môn thất bại, Mã lỗi: " + e);
+        if (this.checkForm()) {
+            try {
+                String sql = "exec sp_addMon N'" + txt_IDSubject.getText() + "', N'" + txt_SubjectName.getText() + "' ";
+                connect.UpdateSQL(sql);
+                loadToTable();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Thêm môn thất bại, Mã lỗi: " + e);
+            }
         }
     }//GEN-LAST:event_btn_AddNewActionPerformed
 
