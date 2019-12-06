@@ -201,44 +201,47 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
             this.fillToTable();
             return;
         }
-        
+
     }//GEN-LAST:event_btn_ViewActionPerformed
 
     private void btn_View1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_View1ActionPerformed
         // TODO add your handling code here:
-         try {
-
+        try {
             JFileChooser excelFileChooser = new JFileChooser("C:\\Users\\admin\\Desktop");
             excelFileChooser.setDialogTitle("SAVE AS");
-            FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILE", "xlsx", "xls","xlxm");
+            FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILE", "xlsx", "xls", "xlxm");
             excelFileChooser.setFileFilter(fnef);
             int excelChooser = excelFileChooser.showSaveDialog(null);
-           
             if (excelChooser == JFileChooser.APPROVE_OPTION) {
                 XSSFWorkbook excelJtableExport = new XSSFWorkbook();
                 XSSFSheet excelSheet = excelJtableExport.createSheet("demo jtable to xlsx");
-                for (int i = 0; i < tbl_View.getRowCount(); i++) {
-                    XSSFRow excelRow = excelSheet.createRow(i);
-                    
-                    for (int j = 0; j < tbl_View.getColumnCount(); j++) {
-                        XSSFCell excelCell = excelRow.createCell(j);
-                        
-                        excelCell.setCellValue(String.valueOf(tbl_View.getValueAt(i, j)));
-                        JOptionPane.showMessageDialog(this,tbl_View.getValueAt(i, j).toString());
-                                
-                    }
-                }
+                try {
+                    for (int i = 0; i < tbl_View.getRowCount(); i++) {
+                        XSSFRow excelRow = excelSheet.createRow((short) i);
 
+                        for (int j = 0; j < tbl_View.getColumnCount(); j++) {
+                            XSSFCell excelCell = excelRow.createCell((short) j);
+
+                            excelCell.setCellValue(String.valueOf(tbl_View.getValueAt(i, j)));
+                            JOptionPane.showMessageDialog(this, tbl_View.getValueAt(i, j).toString());
+                        }
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e);
+                }
                 FileOutputStream excelFOS = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
                 BufferedOutputStream excelBOS = new BufferedOutputStream(excelFOS);
-                
+
                 excelJtableExport.write(excelBOS);
+                excelJtableExport.close();
+                excelBOS.close();
+
                 JOptionPane.showMessageDialog(this, "SUCCESSFULLY");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
-        
+
     }//GEN-LAST:event_btn_View1ActionPerformed
 
 
