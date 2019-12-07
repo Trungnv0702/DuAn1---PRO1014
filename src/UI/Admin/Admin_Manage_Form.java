@@ -5,6 +5,7 @@
  */
 package UI.Admin;
 
+import UI.Lecturers.Lecturers_ChangePassword_Form;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -21,6 +22,11 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
+    }
+
+    public void setUsername(String Username) {
+        lbl_CurrentUsername.setText(Username);
+
     }
 
     /**
@@ -40,9 +46,13 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         lbl_CurrentUsername = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbl_CurrentUsername1 = new javax.swing.JLabel();
+        lbl_CurrentUsername2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -74,11 +84,24 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
 
         lbl_CurrentUsername.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jDesktopPane1.add(lbl_CurrentUsername);
-        lbl_CurrentUsername.setBounds(950, 30, 120, 16);
+        lbl_CurrentUsername.setBounds(1010, 30, 120, 30);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Chào,");
+        jDesktopPane1.add(jLabel2);
+        jLabel2.setBounds(950, 40, 50, 17);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/Desktop3.png"))); // NOI18N
         jDesktopPane1.add(jLabel1);
         jLabel1.setBounds(0, 0, 1310, 660);
+
+        lbl_CurrentUsername1.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jDesktopPane1.add(lbl_CurrentUsername1);
+        lbl_CurrentUsername1.setBounds(1010, 20, 120, 30);
+
+        lbl_CurrentUsername2.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
+        jDesktopPane1.add(lbl_CurrentUsername2);
+        lbl_CurrentUsername2.setBounds(1010, 20, 120, 30);
 
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
 
@@ -87,6 +110,15 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/user1.png"))); // NOI18N
         jMenu1.setText("Tài khoản");
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/switch.png"))); // NOI18N
+        jMenuItem6.setText("Đổi mật khẩu");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/log-out.png"))); // NOI18N
         jMenuItem5.setText("Đăng xuất");
@@ -180,8 +212,21 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
                 + "Hệ thống: Windows 10 version 1903 running on amd64; Cp1252; en_US (nb)\n"
                 + "Website: caodang.poly.edu.vn\n"
                 + "Số điện thoại: +(84) 987568698";
-        JOptionPane.showMessageDialog(this,message);
+        JOptionPane.showMessageDialog(this, message);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        Admin_ChangePassword_Form changePass = new Admin_ChangePassword_Form(lbl_CurrentUsername.getText());
+
+        jDesktopPane1.add(changePass);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = changePass.getSize();
+        changePass.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+
+        jDesktopPane1.setVisible(true);
+        changePass.show();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +267,7 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -236,10 +282,13 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JLabel lbl_CurrentUsername;
+    private javax.swing.JLabel lbl_CurrentUsername1;
+    private javax.swing.JLabel lbl_CurrentUsername2;
     // End of variables declaration//GEN-END:variables
 }

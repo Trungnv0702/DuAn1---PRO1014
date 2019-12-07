@@ -198,6 +198,9 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
         jLabel1.setText("Họ và Tên: ");
 
         btn_Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/delete.png"))); // NOI18N
+        btn_Delete.setText("Xóa");
+        btn_Delete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Delete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DeleteActionPerformed(evt);
@@ -208,6 +211,9 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
         jLabel2.setText("Email/Tài khoản:");
 
         btn_Clean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/wiping-swipe-for-floors.png"))); // NOI18N
+        btn_Clean.setText("Làm sạch");
+        btn_Clean.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Clean.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_Clean.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_CleanActionPerformed(evt);
@@ -218,6 +224,9 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
         jLabel3.setText("Địa chỉ:");
 
         btn_Addnew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/plus.png"))); // NOI18N
+        btn_Addnew.setText("Thêm mới");
+        btn_Addnew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Addnew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_Addnew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_AddnewActionPerformed(evt);

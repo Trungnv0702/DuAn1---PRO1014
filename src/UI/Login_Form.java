@@ -47,6 +47,7 @@ public class Login_Form extends javax.swing.JFrame {
             }
             if (role.equalsIgnoreCase("admin")) {
                 Admin_Manage_Form adminform = new Admin_Manage_Form();
+                adminform.setUsername(txt_Username.getText());
                 adminform.show();
                 this.dispose();
                 return true;
@@ -63,7 +64,7 @@ public class Login_Form extends javax.swing.JFrame {
                 String tengiangvien = "";
                 rs = connect.querySQL(sql1);
                 if (rs.next()) {
-                    LectureMform.setThongTinLecture(rs.getString(1), rs.getString(2));
+                    LectureMform.setThongTinLecture(rs.getString(1), rs.getString(2), txt_Username.getText());
                 }
 
                 this.dispose();

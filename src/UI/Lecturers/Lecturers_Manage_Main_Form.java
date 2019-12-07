@@ -19,12 +19,13 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-
     }
+    String UsernameLecturers;
 
-    public void setThongTinLecture(String magiangvien, String tenGiangVien) {
+    public void setThongTinLecture(String magiangvien, String tenGiangVien, String UsernameLecturers) {
         lbl_nameLecture.setText(tenGiangVien);
         lbl_IDlecture.setText(magiangvien);
+        this.UsernameLecturers = UsernameLecturers;
     }
 
     /**
@@ -45,6 +46,7 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -73,21 +75,21 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
 
         lbl_nameLecture.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jDesktopPane1.add(lbl_nameLecture);
-        lbl_nameLecture.setBounds(1100, 20, 220, 30);
+        lbl_nameLecture.setBounds(1090, 10, 220, 30);
 
         lbl_IDlecture.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jDesktopPane1.add(lbl_IDlecture);
-        lbl_IDlecture.setBounds(1100, 60, 220, 30);
+        lbl_IDlecture.setBounds(1090, 40, 220, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Mã giảng viên");
         jDesktopPane1.add(jLabel4);
-        jLabel4.setBounds(960, 60, 130, 29);
+        jLabel4.setBounds(950, 40, 130, 29);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Giảng viên:");
         jDesktopPane1.add(jLabel3);
-        jLabel3.setBounds(960, 20, 130, 29);
+        jLabel3.setBounds(950, 10, 130, 29);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/background_Main.png"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1351, 681));
@@ -107,6 +109,15 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
         jMenu1.setText("Tài khoản");
         jMenu1.setFocusable(false);
         jMenu1.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/switch.png"))); // NOI18N
+        jMenuItem2.setText("Đổi mật khẩu");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/log-out.png"))); // NOI18N
         jMenuItem1.setText("Đăng xuất");
@@ -305,6 +316,7 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         Lecturers_Create_Exam_Form Create_Exam = new Lecturers_Create_Exam_Form(lbl_IDlecture.getText());
+
         jDesktopPane1.add(Create_Exam);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension jInternalFrameSize = Create_Exam.getSize();
@@ -323,6 +335,19 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Lecturers_ChangePassword_Form changePass = new Lecturers_ChangePassword_Form(UsernameLecturers);
+
+        jDesktopPane1.add(changePass);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = changePass.getSize();
+        changePass.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+
+        jDesktopPane1.setVisible(true);
+        changePass.show();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      *
@@ -377,6 +402,7 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;

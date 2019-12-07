@@ -68,26 +68,32 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cbb_Class = new javax.swing.JComboBox<String>();
+        cbb_Class = new javax.swing.JComboBox<>();
         btn_View = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_View = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        cbb_Order = new javax.swing.JComboBox<String>();
+        cbb_Order = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btn_View1 = new javax.swing.JToggleButton();
 
         setClosable(true);
+        setTitle("Thống kê kết quả");
+        setDesktopIcon(null);
 
-        btn_View.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_View.setText("Xem");
+        btn_View.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_View.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/preview.png"))); // NOI18N
+        btn_View.setText("Xem trước");
+        btn_View.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_View.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_View.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ViewActionPerformed(evt);
             }
         });
 
+        tbl_View.setBackground(new java.awt.Color(255, 204, 102));
         tbl_View.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -105,16 +111,19 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Bảng thống kê kết quả");
 
-        cbb_Order.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cao đến thấp", "Thấp đến cao" }));
+        cbb_Order.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cao đến thấp", "Thấp đến cao" }));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Lớp :");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Thứ tự :");
 
-        btn_View1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_View1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_View1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/share2.png"))); // NOI18N
         btn_View1.setText("Kết xuất(.xlsx)");
+        btn_View1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_View1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_View1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_View1ActionPerformed(evt);
@@ -126,47 +135,52 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(163, 163, 163)
+                                        .addComponent(jLabel3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cbb_Class, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbb_Order, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(52, 52, 52)
+                                .addComponent(btn_View, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(btn_View1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(265, 265, 265)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 113, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(cbb_Class, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(cbb_Order, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
-                .addComponent(btn_View)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_View1)
-                .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(234, 234, 234))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_View)
+                    .addComponent(btn_View1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbb_Class, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbb_Order, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_View)
-                            .addComponent(btn_View1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(29, 29, 29)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbb_Class, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbb_Order, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -223,7 +237,6 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
                             XSSFCell excelCell = excelRow.createCell((short) j);
 
                             excelCell.setCellValue(String.valueOf(tbl_View.getValueAt(i, j)));
-                            JOptionPane.showMessageDialog(this, tbl_View.getValueAt(i, j).toString());
                         }
                     }
                 } catch (Exception e) {
@@ -236,7 +249,7 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
                 excelJtableExport.close();
                 excelBOS.close();
 
-                JOptionPane.showMessageDialog(this, "SUCCESSFULLY");
+                JOptionPane.showMessageDialog(this, "Đã lưu!");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);

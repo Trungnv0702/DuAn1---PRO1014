@@ -5,7 +5,9 @@
  */
 package UI.Admin;
 
+import DAO.ConnectDB;
 import UI.Lecturers.*;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,9 +19,12 @@ public class Admin_ChangePassword_Form extends javax.swing.JInternalFrame {
     /**
      * Creates new form Lecturers_ChangePassword_Form
      */
-    public Admin_ChangePassword_Form() {
+    String username;
+
+    public Admin_ChangePassword_Form(String usernameGet) {
         initComponents();
         setTitle("Đổi mật khẩu");
+        this.username = usernameGet;
     }
 
     /**
@@ -130,25 +135,35 @@ public class Admin_ChangePassword_Form extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-         if (txt_NewPass.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Không được để trống mật khẩu");
-                return;
-            }
-           if (txt_NewPass.getText().length() < 5) {
-                JOptionPane.showMessageDialog(this, "Mật khẩu mới lớn hơn hoặc bằng 5 kí tự");
-                return;
-            }
-            if (txt_ReNewPass.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Nhập lại mật khẩu");
-                return;
-            }
-            if (!txt_ReNewPass.getText().equals(txt_NewPass.getText())) {
-                JOptionPane.showMessageDialog(this, "xác nhận mật khẩu sai");
-                return;
-            }
-            
-            
-            
+        if (txt_NewPass.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Không được để trống mật khẩu");
+            return;
+        }
+        if (txt_NewPass.getText().length() < 5) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu mới lớn hơn hoặc bằng 5 kí tự");
+            return;
+        }
+        if (txt_ReNewPass.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Nhập lại mật khẩu");
+            return;
+        }
+        if (!txt_ReNewPass.getText().equals(txt_NewPass.getText())) {
+            JOptionPane.showMessageDialog(this, "xác nhận mật khẩu sai");
+            return;
+        }
+
+        String sql = "update Taikhoan set Matkhau = ? where Tentaikhoan = ?";
+        ConnectDB connect = new ConnectDB();
+        try {
+            PreparedStatement prepe = connect.dungStament(sql);
+            prepe.setString(1, txt_NewPass.getText());
+            prepe.setString(2, username);
+            prepe.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Cập nhật thàng công!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi đổi mật khẩu: " + e);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
