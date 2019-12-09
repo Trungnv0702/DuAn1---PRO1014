@@ -25,45 +25,109 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
 
     }
 
-    public void AddNewLacture() {
+//    public void AddNewLacture() {
+//
+//        if (txt_IDLecturers.getText().equals("")) {
+//            JOptionPane.showMessageDialog(this, "Không để trống mã giảng viên");
+//            return;
+//        }
+//        if (txt_Name.getText().equals("")) {
+//            JOptionPane.showMessageDialog(this, "Không để trống Họ Tên");
+//            return;
+//        }
+//        if (txt_email.getText().equals("")) {
+//            JOptionPane.showMessageDialog(this, "Không để trống Email");
+//            return;
+//        }
+//        if (txt_Password.getText().equals("")) {
+//            JOptionPane.showMessageDialog(this, "Không để trống Mật khẩu");
+//            return;
+//        }
+//        if (txt_Numberphone.getText().equals("")) {
+//            JOptionPane.showMessageDialog(this, "Không để trống số điện thoại");
+//            return;
+//        }
+//        if (txt_Address.getText().equals("")) {
+//            JOptionPane.showMessageDialog(this, "Không để trống địa chỉ");
+//            return;
+//        }
+//
+//        String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
+//        try {
+//            for (int i = 0; i < tab_View.getRowCount(); i++) {
+//                if (txt_IDLecturers.getText().equalsIgnoreCase(tab_View.getValueAt(i, 0).toString())) {
+//                    JOptionPane.showMessageDialog(this, "Mã giảng viên đã tồn tại!");
+//                    return;
+//                }
+//            }
+//            connect.UpdateSQL(sql);
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1, Lỗi chi tiết: " + e);
+//        }
+//    }
+    public boolean AddNewLacture() {
 
         if (txt_IDLecturers.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Không để trống mã giảng viên");
-            return;
+            JOptionPane.showMessageDialog(this, "Không để trống mã giảng viên!");
+            return false;
+        }
+        if (txt_IDLecturers.getText().matches("[ ]+")) {
+            JOptionPane.showMessageDialog(this, "Không đúng định dạng mã giảng viên!");
+            return false;
         }
         if (txt_Name.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Không để trống Họ Tên");
-            return;
+            JOptionPane.showMessageDialog(this, "Không để trống Họ Tên!");
+            return false;
+        }
+        if (txt_Name.getText().matches("[ ]+")) {
+            JOptionPane.showMessageDialog(this, "Không đúng định dạng tên giảng viên!");
+            return false;
         }
         if (txt_email.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Không để trống Email");
-            return;
+            JOptionPane.showMessageDialog(this, "Không để trống Email!");
+            return false;
+        }
+        if (txt_email.getText().matches("[ ]+")) {
+            JOptionPane.showMessageDialog(this, "Không đúng định dạng Email!");
+            return false;
         }
         if (txt_Password.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Không để trống Mật khẩu");
-            return;
+            JOptionPane.showMessageDialog(this, "Không để trống Mật khẩu!");
+            return false;
+        }
+        if (txt_Password.getText().matches("[ ]+")) {
+            JOptionPane.showMessageDialog(this, "Không đúng định dạng mật khẩu");
+            return false;
         }
         if (txt_Numberphone.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Không để trống số điện thoại");
-            return;
+            JOptionPane.showMessageDialog(this, "Không để trống số điện thoại!");
+            return false;
+        }
+        try {
+            Double.parseDouble(txt_Numberphone.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập số !");
+            return false;
+        }
+        if (txt_Numberphone.getText().matches("[ ]+") || txt_Numberphone.getText().length() > 12) {
+            JOptionPane.showMessageDialog(this, "Không đúng định dạng số điện thoại!");
+            return false;
         }
         if (txt_Address.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Không để trống địa chỉ");
-            return;
+            JOptionPane.showMessageDialog(this, "Không để trống địa chỉ!");
+            return false;
         }
-
-        String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
-        try {
-            for (int i = 0; i < tab_View.getRowCount(); i++) {
-                if (txt_IDLecturers.getText().equalsIgnoreCase(tab_View.getValueAt(i, 0).toString())) {
-                    JOptionPane.showMessageDialog(this, "Mã giảng viên đã tồn tại!");
-                    return;
-                }
+        if (txt_Address.getText().matches("[ ]+")) {
+            JOptionPane.showMessageDialog(this, "Không đúng định dạng địa chỉ!");
+            return false;
+        }
+        for (int i = 0; i < tab_View.getRowCount(); i++) {
+            if (txt_IDLecturers.getText().equalsIgnoreCase(tab_View.getValueAt(i, 0).toString())) {
+                JOptionPane.showMessageDialog(this, "Mã giảng viên đã tồn tại!");
+                return false;
             }
-            connect.UpdateSQL(sql);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1, Lỗi chi tiết: " + e);
         }
+        return true;
     }
 
     public void UpdateLecturers() {
@@ -397,7 +461,14 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
 
     private void btn_AddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddnewActionPerformed
 
-        this.AddNewLacture();
+        if (this.AddNewLacture()) {
+            String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
+            try {
+                connect.UpdateSQL(sql);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1, Lỗi chi tiết: " + e);
+            }
+        }
         this.loadToTable();
 
     }//GEN-LAST:event_btn_AddnewActionPerformed
