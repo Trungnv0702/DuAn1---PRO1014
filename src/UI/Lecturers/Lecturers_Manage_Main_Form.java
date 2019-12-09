@@ -61,7 +61,6 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
 
@@ -206,10 +205,6 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem7);
         jMenu3.add(jSeparator1);
-
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/share.png"))); // NOI18N
-        jMenuItem8.setText("Xuất thống kê");
-        jMenu3.add(jMenuItem8);
 
         jMenuBar1.add(jMenu3);
 
@@ -407,7 +402,6 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator3;

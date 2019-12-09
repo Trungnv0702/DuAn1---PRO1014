@@ -79,12 +79,13 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
         btn_View1 = new javax.swing.JToggleButton();
 
         setClosable(true);
-        setTitle("Thống kê kết quả");
-        setDesktopIcon(null);
+        setTitle("Thống kê và kết xuất");
 
-        btn_View.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbb_Class.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        btn_View.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_View.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/preview.png"))); // NOI18N
-        btn_View.setText("Xem trước");
+        btn_View.setText("Xem");
         btn_View.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_View.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_View.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +94,6 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
             }
         });
 
-        tbl_View.setBackground(new java.awt.Color(255, 204, 102));
         tbl_View.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -111,6 +111,7 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Bảng thống kê kết quả");
 
+        cbb_Order.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbb_Order.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cao đến thấp", "Thấp đến cao" }));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -119,7 +120,7 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Thứ tự :");
 
-        btn_View1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_View1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_View1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/share2.png"))); // NOI18N
         btn_View1.setText("Kết xuất(.xlsx)");
         btn_View1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -135,52 +136,45 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(278, 278, 278)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(163, 163, 163)
-                                        .addComponent(jLabel3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cbb_Class, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cbb_Order, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(52, 52, 52)
-                                .addComponent(btn_View, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(btn_View1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(265, 265, 265)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 113, Short.MAX_VALUE)))
+                            .addComponent(jLabel2)
+                            .addComponent(cbb_Class, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(cbb_Order, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addComponent(btn_View, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_View1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbb_Class, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_View)
                     .addComponent(btn_View1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbb_Class, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbb_Order, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbb_Order, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -237,6 +231,7 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
                             XSSFCell excelCell = excelRow.createCell((short) j);
 
                             excelCell.setCellValue(String.valueOf(tbl_View.getValueAt(i, j)));
+                            JOptionPane.showMessageDialog(this, tbl_View.getValueAt(i, j).toString());
                         }
                     }
                 } catch (Exception e) {
@@ -249,7 +244,7 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
                 excelJtableExport.close();
                 excelBOS.close();
 
-                JOptionPane.showMessageDialog(this, "Đã lưu!");
+                JOptionPane.showMessageDialog(this, "SUCCESSFULLY");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
