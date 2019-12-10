@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.Lecturers;
+package UI.Admin;
 
+import UI.Lecturers.*;
 import DAO.ConnectDB;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -22,9 +23,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author TrinhNgocQuang
  */
-public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
+public class Admin_Statistics_Form extends javax.swing.JInternalFrame {
 
-    public Lecturers_Statistics_Form() {
+    public Admin_Statistics_Form() {
         initComponents();
         this.loadDataToCombobox();
     }
@@ -244,7 +245,7 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
                 excelJtableExport.close();
                 excelBOS.close();
 
-                JOptionPane.showMessageDialog(this, "SUCCESSFULLY");
+                JOptionPane.showMessageDialog(this, "Lưu thành công!");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);

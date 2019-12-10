@@ -52,7 +52,10 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
             return;
         }
 
-        String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
+        String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "',"
+                + " N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "'"
+                + ", N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "',"
+                + " N'" + txt_Password.getText() + "', N'giangvien' ";
         try {
             for (int i = 0; i < tab_View.getRowCount(); i++) {
                 if (txt_IDLecturers.getText().equalsIgnoreCase(tab_View.getValueAt(i, 0).toString())) {
@@ -62,7 +65,8 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
             }
             connect.UpdateSQL(sql);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1, Lỗi chi tiết: " + e);
+            JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1,"
+                    + " Lỗi chi tiết: " + e);
         }
     }
 
@@ -80,9 +84,12 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
     }
 
     public void loadToTable() {
-        String head[] = {"Mã giảng viên", "Họ và tên", "Email/Tên người dùng", "Mật khẩu", "Số điện thoại", "Địa chỉ"};
+        String head[] = {"Mã giảng viên", "Họ và tên", "Email/Tên người dùng", "Mật "
+                + "khẩu", "Số điện thoại", "Địa chỉ"};
         DefaultTableModel tablemodel = new DefaultTableModel(head, 0);
-        String sql = "select Magiangvien, Tengiangvien, Giangvien.Email, Matkhau, Sodienthoai, Diachi from Giangvien  inner join Taikhoan on Giangvien.Email = Taikhoan.Tentaikhoan";
+        String sql = "select Magiangvien, Tengiangvien, Giangvien.Email, Matkhau, "
+                + "Sodienthoai, Diachi from Giangvien  inner join Taikhoan on"
+                + " Giangvien.Email = Taikhoan.Tentaikhoan";
         try {
             ResultSet rs = connect.querySQL(sql);
             while (rs.next()) {
@@ -329,27 +336,26 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
+                                        .addGap(76, 76, 76)
                                         .addComponent(jLabel8))
-                                    .addComponent(jLabel7)))
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)))
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12))
+                            .addComponent(jLabel7))
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel6)
@@ -366,22 +372,24 @@ public class Admin_Manage_Lacturers_Form extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(22, Short.MAX_VALUE)
+                        .addContainerGap(43, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jLabel12))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)
-                                .addGap(102, 102, 102))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))))
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel11)))
+                        .addGap(102, 102, 102))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filler2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))

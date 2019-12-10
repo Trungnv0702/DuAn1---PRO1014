@@ -128,6 +128,7 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(255, 204, 102));
         setClosable(true);
         setForeground(new java.awt.Color(255, 204, 51));
+        setTitle("Quản lý câu hỏi");
         setPreferredSize(new java.awt.Dimension(1200, 640));
 
         jLabel1.setText("Nội dung câu hỏi:");
@@ -354,7 +355,7 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

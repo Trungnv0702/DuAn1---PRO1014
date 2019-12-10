@@ -42,9 +42,10 @@ public class Student_Exam_Form extends javax.swing.JFrame {
                         }
                         if (tbl_Minute.getText().equals("0") && lbl_seconds.getText().equals("0")) {
                             JOptionPane.showMessageDialog(null, "Hết thời gian làm bài");
+                            endExam();
                         }
                         lbl_seconds.setText("" + ((60 - seconds)));
-                        tbl_Minute.setText("" + ((34 - minute)));
+                        tbl_Minute.setText("" + ((19 - minute)));
                     } catch (Exception e) {
                     }
                 }
@@ -59,6 +60,126 @@ public class Student_Exam_Form extends javax.swing.JFrame {
 
     ConnectDB con = new ConnectDB();
     ArrayList<Question> listQS = new ArrayList<>();
+
+    public void endExam() {
+        try {
+
+            //câu 1
+            for (Enumeration<AbstractButton> buttons = btnGrCH1.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(0).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+            //câu 2
+            for (Enumeration<AbstractButton> buttons = btnGrCH2.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(1).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+
+            //câu 3
+            for (Enumeration<AbstractButton> buttons = btnGrCH3.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(2).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+            //câu 4
+            for (Enumeration<AbstractButton> buttons = btnGrCH4.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(3).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+
+            //câu 5
+            for (Enumeration<AbstractButton> buttons = btnGrCH5.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(4).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+
+            //câu 6
+            for (Enumeration<AbstractButton> buttons = btnGrCH6.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(5).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+            //câu 7
+            for (Enumeration<AbstractButton> buttons = btnGrCH7.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(6).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+            //câu 8
+            for (Enumeration<AbstractButton> buttons = btnGrCH8.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(7).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+            //câu 9
+            for (Enumeration<AbstractButton> buttons = btnGrCH9.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(8).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+            //câu 10
+            for (Enumeration<AbstractButton> buttons = btnGrCH10.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if (button.getText().equalsIgnoreCase(listQS.get(9).getDapandung())) {
+                        diemThi += 1;
+                    }
+
+                }
+            }
+
+            String sql = "exec sp_addKetqua N'" + lbl_StudentID.getText() + "', " + diemThi + ", N'" + lbl_Exam.getText() + "'";
+            con.UpdateSQL(sql);
+            Student_ResultExam_Form Result_Exam = new Student_ResultExam_Form();
+            Result_Exam.setContent(lbl_Exam.getText(), lbl_Subject.getText(), lbl_StudentName.getText(), lbl_StudentID.getText(), lbl_lecturers.getText(), diemThi);
+            this.dispose();
+            Result_Exam.show();
+//            JOptionPane.showMessageDialog(null, sql);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 
     public void loadQuestion() {
         try {
@@ -1161,9 +1282,10 @@ public class Student_Exam_Form extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         jPanel1.setBackground(new java.awt.Color(231, 153, 64));
@@ -1278,9 +1400,6 @@ public class Student_Exam_Form extends javax.swing.JFrame {
                         .addGap(68, 68, 68)
                         .addComponent(jLabel8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(ckb_finish))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1316,7 +1435,10 @@ public class Student_Exam_Form extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_StudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_lecturers, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lbl_lecturers, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(ckb_finish)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1366,9 +1488,9 @@ public class Student_Exam_Form extends javax.swing.JFrame {
                     .addComponent(tbl_Minute2))
                 .addGap(84, 84, 84)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103)
+                .addGap(72, 72, 72)
                 .addComponent(ckb_finish)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(btn_Submit, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1380,15 +1502,12 @@ public class Student_Exam_Form extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -1428,124 +1547,7 @@ public class Student_Exam_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_rdo_quest5_DActionPerformed
 
     private void btn_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SubmitActionPerformed
-
-        try {
-
-            //câu 1
-            for (Enumeration<AbstractButton> buttons = btnGrCH1.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(0).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-            //câu 2
-            for (Enumeration<AbstractButton> buttons = btnGrCH2.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(1).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-
-            //câu 3
-            for (Enumeration<AbstractButton> buttons = btnGrCH3.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(2).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-            //câu 4
-            for (Enumeration<AbstractButton> buttons = btnGrCH4.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(3).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-
-            //câu 5
-            for (Enumeration<AbstractButton> buttons = btnGrCH5.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(4).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-
-            //câu 6
-            for (Enumeration<AbstractButton> buttons = btnGrCH6.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(5).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-            //câu 7
-            for (Enumeration<AbstractButton> buttons = btnGrCH7.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(6).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-            //câu 8
-            for (Enumeration<AbstractButton> buttons = btnGrCH8.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(7).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-            //câu 9
-            for (Enumeration<AbstractButton> buttons = btnGrCH9.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(8).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-            //câu 10
-            for (Enumeration<AbstractButton> buttons = btnGrCH10.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    if (button.getText().equalsIgnoreCase(listQS.get(9).getDapandung())) {
-                        diemThi += 1;
-                    }
-
-                }
-            }
-
-            String sql = "exec sp_addKetqua N'" + lbl_StudentID.getText() + "', " + diemThi + ", N'" + lbl_Exam.getText() + "'";
-            con.UpdateSQL(sql);
-            Student_ResultExam_Form Result_Exam = new Student_ResultExam_Form();
-            Result_Exam.setContent(lbl_Exam.getText(), lbl_Subject.getText(), lbl_StudentName.getText(), lbl_StudentID.getText(), lbl_lecturers.getText(), diemThi);
-            this.dispose();
-            Result_Exam.show();
-//            JOptionPane.showMessageDialog(null, sql);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        endExam();
     }//GEN-LAST:event_btn_SubmitActionPerformed
 
     private void rdo_quest6_DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_quest6_DActionPerformed

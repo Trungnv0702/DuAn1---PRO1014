@@ -31,13 +31,15 @@ public class Login_Form extends javax.swing.JFrame {
         try {
             String Username = txt_Username.getText();
             String Password = txt_Password.getText();
-            String sql = "select role from Taikhoan where Tentaikhoan like N'" + Username + "' and Matkhau like N'" + Password + "'";
-            String sqlGetName = "select Tensinhvien,masinhvien from Sinhvien where Email = N'" + Username + "'";
+            String sql = "select role from Taikhoan where Tentaikhoan like N'" + Username
+                    + "' and Matkhau like N'" + Password + "'";
+            String sqlGetName = "select Tensinhvien,masinhvien from Sinhvien where"
+                    + " Email = N'" + Username + "'";
             ResultSet getName = connect.querySQL(sqlGetName);
             ResultSet rs = connect.querySQL(sql);
             String role = "";
             String pushName = "";
-            String pushID="";
+            String pushID = "";
             while (getName.next()) {
                 pushName = getName.getString(1);
                 pushID = getName.getString(2);
@@ -60,7 +62,8 @@ public class Login_Form extends javax.swing.JFrame {
             } else if (role.equalsIgnoreCase("giangvien")) {
                 Lecturers_Manage_Main_Form LectureMform = new Lecturers_Manage_Main_Form();
                 LectureMform.show();
-                String sql1 = "	select magiangvien,tengiangvien from giangvien where email like '" + Username + "'";
+                String sql1 = "	select magiangvien,tengiangvien from giangvien where email"
+                        + " like '" + Username + "'";
                 String tengiangvien = "";
                 rs = connect.querySQL(sql1);
                 if (rs.next()) {
@@ -184,7 +187,10 @@ public class Login_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        // TODO add your handling code here:
+        int c = JOptionPane.showConfirmDialog(this, "Thoát chương trình", "Bạn có muốn thoát?", JOptionPane.YES_NO_OPTION);
+        if (c == 0) {
+            this.dispose();
+        }
     }//GEN-LAST:event_btn_exitActionPerformed
 
     /**

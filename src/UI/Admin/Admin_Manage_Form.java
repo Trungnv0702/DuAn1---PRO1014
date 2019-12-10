@@ -6,6 +6,7 @@
 package UI.Admin;
 
 import UI.Lecturers.Lecturers_ChangePassword_Form;
+import UI.Lecturers.Lecturers_Statistics_Form;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -145,7 +146,13 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
         jMenu5.setText("Thống kê");
         jMenu5.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
 
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/analytics.png"))); // NOI18N
         jMenuItem8.setText("Thống kê");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem8);
 
         jMenuBar1.add(jMenu5);
@@ -189,16 +196,19 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
 
         Admin_Manage_Lacturers_Form Manage_Lecturers = new Admin_Manage_Lacturers_Form();
         jDesktopPane1.add(Manage_Lecturers);
-
+        
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension jInternalFrameSize = Manage_Lecturers.getSize();
         Manage_Lecturers.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
                 (desktopSize.height - jInternalFrameSize.height) / 2);
+
+        Manage_Lecturers.setVisible(true);
         Manage_Lecturers.show();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
-        int c = JOptionPane.showConfirmDialog(this, "Thoát chương trình", "Bạn có muốn thoát?", JOptionPane.YES_NO_OPTION);
+        int c = JOptionPane.showConfirmDialog(this, "Thoát chương trình", "Bạn có muốn"
+                + " thoát?", JOptionPane.YES_NO_OPTION);
         if (c == 0) {
             this.dispose();
         }
@@ -209,7 +219,8 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
         String message = "Tên sản phẩm: Phần mền thi Exam\n"
                 + "Phiên bản: FPL Exam v1.0.1\n"
                 + "Liên hệ với chúng tôi: FPL@edu.com.vn\n"
-                + "Hệ thống: Windows 10 version 1903 running on amd64; Cp1252; en_US (nb)\n"
+                + "Hệ thống: Windows 10 version 1903 running on amd64; Cp1252; "
+                + "en_US (nb)\n"
                 + "Website: caodang.poly.edu.vn\n"
                 + "Số điện thoại: +(84) 987568698";
         JOptionPane.showMessageDialog(this, message);
@@ -227,6 +238,17 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
         jDesktopPane1.setVisible(true);
         changePass.show();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        Lecturers_Statistics_Form Report = new Lecturers_Statistics_Form();
+        jDesktopPane1.add(Report);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = Report.getSize();
+        Report.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        Report.setVisible(true);
+        Report.show();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
