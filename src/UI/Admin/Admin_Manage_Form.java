@@ -194,15 +194,13 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
 
-        Admin_Manage_Lacturers_Form Manage_Lecturers = new Admin_Manage_Lacturers_Form();
+        Admin_Manager_Lectures Manage_Lecturers = new Admin_Manager_Lectures();
         jDesktopPane1.add(Manage_Lecturers);
-        
+
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension jInternalFrameSize = Manage_Lecturers.getSize();
         Manage_Lecturers.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
                 (desktopSize.height - jInternalFrameSize.height) / 2);
-
-        Manage_Lecturers.setVisible(true);
         Manage_Lecturers.show();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
