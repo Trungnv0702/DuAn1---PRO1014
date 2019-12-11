@@ -277,7 +277,7 @@ public class Student_Exam_Form extends javax.swing.JFrame {
             rdo_quest9_D.setText(c9[3]);
 
             String c10[] = (String[]) ListAsw.get(9);
-            lbl_Ques10.setText(listQS.get(8).getNoidungcauhoi());
+            lbl_Ques10.setText(listQS.get(9).getNoidungcauhoi());
             rdo_quest10_A.setText(c10[0]);
             rdo_quest10_B.setText(c10[1]);
             rdo_quest10_C.setText(c10[2]);

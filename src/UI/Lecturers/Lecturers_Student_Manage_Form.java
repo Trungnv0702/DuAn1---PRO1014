@@ -216,6 +216,31 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
 
     }
 
+    public void addNew() {
+        if (this.checkFormAddNew()) {
+            try {
+                String sql = "exec sp_addSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "','Sinhvien'";
+                connect.UpdateSQL(sql);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Thêm sinh viên thất bại!" + e);
+            }
+        }
+        this.loadToTable();
+    }
+
+    public void Update() {
+        if (this.checkFormUpdate()) {
+            String sql = "exec sp_updateSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "'";
+            try {
+                connect.UpdateSQL(sql);
+                JOptionPane.showMessageDialog(this, "Chỉnh sửa thành công!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Lỗi sửa sinh viên: " + e);
+            }
+        }
+        this.loadToTable();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -450,15 +475,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_FullNameActionPerformed
 
     private void btn_AddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddnewActionPerformed
-        if (this.checkFormAddNew()) {
-            try {
-                String sql = "exec sp_addSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "','Sinhvien'";
-                connect.UpdateSQL(sql);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Thêm sinh viên thất bại!" + e);
-            }
-        }
-        this.loadToTable();
+        this.addNew();
     }//GEN-LAST:event_btn_AddnewActionPerformed
 
     private void txt_IDStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IDStudentActionPerformed
@@ -495,16 +512,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
     private void btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateActionPerformed
-        if (this.checkFormUpdate()) {
-            String sql = "exec sp_updateSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "'";
-            try {
-                connect.UpdateSQL(sql);
-                JOptionPane.showMessageDialog(this, "Chỉnh sửa thành công!");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Lỗi sửa sinh viên: " + e);
-            }
-        }
-        this.loadToTable();
+        this.Update();
     }//GEN-LAST:event_btn_UpdateActionPerformed
 
 

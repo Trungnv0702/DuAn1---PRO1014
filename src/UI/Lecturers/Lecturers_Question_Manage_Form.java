@@ -93,6 +93,49 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
         }
     }
 
+    public void addNew() {
+        if (this.checkForm()) {
+            try {
+                String sql = "exec sp_addCauhoi N'" + cbb_Subject.getSelectedItem().toString() + "' ,N'" + txt_ContentQuestion.getText() + "' , N'" + txt_Answer1.getText() + "',N'" + txt_Answer2.getText() + "',N'" + txt_Answer3.getText() + "',N'" + txt_CorrectAnswer.getText() + "'";
+                connet.UpdateSQL(sql);
+                this.loadDatatotable();
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    public void Update() {
+        if (IDquestion == -1) {
+            JOptionPane.showMessageDialog(this, "Chọn đói tượng cập nhât");
+        } else {
+            try {
+                this.checkForm();
+                String sql = (String) "exec sp_updateCauhoi " + IDquestion + ", N'" + cbb_Subject.getSelectedItem().toString() + "',N'" + txt_ContentQuestion.getText() + "' ,N'" + txt_Answer1.getText() + "',N'" + txt_Answer2.getText() + "',N'" + txt_Answer3.getText() + "',N'" + txt_CorrectAnswer.getText() + "'";
+                connet.UpdateSQL(sql);
+                IDquestion = -1;
+                this.loadDatatotable();
+//                JOptionPane.showMessageDialog(this, sql);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }
+
+    public void delete() {
+        if (IDquestion == -1) {
+            JOptionPane.showMessageDialog(this, "Chọn đói tượng cập nhât");
+        } else {
+            try {
+                String sql = "exec sp_removeCauhoi " + IDquestion;
+                connet.UpdateSQL(sql);
+                IDquestion = -1;
+                this.loadDatatotable();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -362,32 +405,12 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddQuestionActionPerformed
-        if (this.checkForm()) {
-            try {
-                String sql = "exec sp_addCauhoi N'" + cbb_Subject.getSelectedItem().toString() + "' ,N'" + txt_ContentQuestion.getText() + "' , N'" + txt_Answer1.getText() + "',N'" + txt_Answer2.getText() + "',N'" + txt_Answer3.getText() + "',N'" + txt_CorrectAnswer.getText() + "'";
-                connet.UpdateSQL(sql);
-                this.loadDatatotable();
-            } catch (Exception e) {
-            }
-        }
+        this.addNew();
     }//GEN-LAST:event_btn_AddQuestionActionPerformed
 
     private void btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateActionPerformed
-        if (IDquestion == -1) {
-            JOptionPane.showMessageDialog(this, "Chọn đói tượng cập nhât");
-        } else {
-            try {
-                this.checkForm();
-                String sql = (String) "exec sp_updateCauhoi " + IDquestion + ", N'" + cbb_Subject.getSelectedItem().toString() + "',N'" + txt_ContentQuestion.getText() + "' ,N'" + txt_Answer1.getText() + "',N'" + txt_Answer2.getText() + "',N'" + txt_Answer3.getText() + "',N'" + txt_CorrectAnswer.getText() + "'";
-                connet.UpdateSQL(sql);
-                IDquestion = -1;
-                this.loadDatatotable();
-//                JOptionPane.showMessageDialog(this, sql);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        }
 
+        this.Update();
     }//GEN-LAST:event_btn_UpdateActionPerformed
 
     private void btn_CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CleanActionPerformed
@@ -396,18 +419,8 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
-        if (IDquestion == -1) {
-            JOptionPane.showMessageDialog(this, "Chọn đói tượng cập nhât");
-        } else {
-            try {
-                String sql = "exec sp_removeCauhoi " + IDquestion;
-                connet.UpdateSQL(sql);
-                IDquestion = -1;
-                this.loadDatatotable();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        }
+
+        this.delete();
 
 
     }//GEN-LAST:event_btn_deleteActionPerformed

@@ -97,7 +97,7 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
                 return false;
             }
         }
-        
+
         if (txt_Password.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Không để trống Mật khẩu!");
             return false;
@@ -135,6 +135,40 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
             }
         }
         return true;
+    }
+
+    public void addNew() {
+        if (this.AddNewLacture()) {
+            String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
+            try {
+                connect.UpdateSQL(sql);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1, Lỗi chi tiết: " + e);
+            }
+        }
+        this.loadDataToTable();
+    }
+
+    public void isDelete() {
+        if (isDelete == true) {
+            DeleteLacture();
+            this.loadDataToTable();
+            JOptionPane.showMessageDialog(this, "Xóa thành công!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Thao tác sai!");
+        }
+    }
+
+    public void Clean() {
+        txt_Address.setText("");
+        txt_IDLecturers.setText("");
+        txt_Name.setText("");
+        txt_Numberphone.setText("");
+        txt_Password.setText("");
+        txt_email.setText("");
+        this.loadDataToTable();
+        txt_IDLecturers.setEditable(true);
+        txt_IDLecturers.setBackground(Color.white);
     }
 
     /**
@@ -390,38 +424,16 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_NumberphoneActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
-        if (isDelete == true) {
-            DeleteLacture();
-            this.loadDataToTable(); 
-            JOptionPane.showMessageDialog(this, "Xóa thành công!");
-        } else {
-
-        }
+        isDelete();
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
     private void btn_CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CleanActionPerformed
-        txt_Address.setText("");
-        txt_IDLecturers.setText("");
-        txt_Name.setText("");
-        txt_Numberphone.setText("");
-        txt_Password.setText("");
-        txt_email.setText("");
-        this.loadDataToTable();
-        txt_IDLecturers.setEditable(true);
-        txt_IDLecturers.setBackground(Color.white);
+        this.Clean();
 
     }//GEN-LAST:event_btn_CleanActionPerformed
 
     private void btn_AddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddnewActionPerformed
-        if (this.AddNewLacture()) {
-            String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
-            try {
-                connect.UpdateSQL(sql);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1, Lỗi chi tiết: " + e);
-            }
-        }
-        this.loadDataToTable();
+        this.addNew();
 
     }//GEN-LAST:event_btn_AddnewActionPerformed
 

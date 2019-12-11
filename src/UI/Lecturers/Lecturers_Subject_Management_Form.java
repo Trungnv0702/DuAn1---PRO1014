@@ -58,9 +58,20 @@ public class Lecturers_Subject_Management_Form extends javax.swing.JInternalFram
         }
     }
 
- 
     ConnectDB connect = new ConnectDB();
 
+    public void AddNewSubject(){
+        if (this.checkForm()) {
+            try {
+                String sql = "exec sp_addMon N'" + txt_IDSubject.getText() + "', N'" + txt_SubjectName.getText() + "' ";
+                connect.UpdateSQL(sql);
+                loadToTable();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Thêm môn thất bại, Mã lỗi: " + e);
+            }
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -174,15 +185,7 @@ public class Lecturers_Subject_Management_Form extends javax.swing.JInternalFram
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddNewActionPerformed
-        if (this.checkForm()) {
-            try {
-                String sql = "exec sp_addMon N'" + txt_IDSubject.getText() + "', N'" + txt_SubjectName.getText() + "' ";
-                connect.UpdateSQL(sql);
-                loadToTable();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Thêm môn thất bại, Mã lỗi: " + e);
-            }
-        }
+        this.AddNewSubject();
     }//GEN-LAST:event_btn_AddNewActionPerformed
 
     private void txt_SubjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_SubjectNameActionPerformed

@@ -27,6 +27,13 @@ public class Login_Form extends javax.swing.JFrame {
 
     ConnectDB connect = new ConnectDB();
 
+    public void isExit() {
+        int c = JOptionPane.showConfirmDialog(this, "Thoát chương trình", "Bạn có muốn thoát?", JOptionPane.YES_NO_OPTION);
+        if (c == 0) {
+            this.dispose();
+        }
+    }
+
     public boolean checkLogin() {
         try {
             String Username = txt_Username.getText();
@@ -187,10 +194,7 @@ public class Login_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        int c = JOptionPane.showConfirmDialog(this, "Thoát chương trình", "Bạn có muốn thoát?", JOptionPane.YES_NO_OPTION);
-        if (c == 0) {
-            this.dispose();
-        }
+        this.isExit();
     }//GEN-LAST:event_btn_exitActionPerformed
 
     /**

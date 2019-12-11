@@ -48,7 +48,7 @@
                       <EmptySpace pref="79" max="32767" attributes="0"/>
                       <Component id="btn_View" min="-2" pref="161" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_View1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Export" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -65,15 +65,13 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_View1" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cbb_Class" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btn_View" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbb_Order" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cbb_Class" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_View" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbb_Order" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="btn_Export" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="314" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -219,7 +217,7 @@
         <Property name="text" type="java.lang.String" value="Th&#x1ee9; t&#x1ef1; :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btn_View1">
+    <Component class="javax.swing.JToggleButton" name="btn_Export">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="1"/>
@@ -232,7 +230,7 @@
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_View1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ExportActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
