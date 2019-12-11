@@ -474,12 +474,14 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
         txt_Password.setText("");
         txt_SchoolYear.setText("");
         txt_IDStudent.enable();
+        txt_Email.enable();
     }//GEN-LAST:event_txt_cleanActionPerformed
 
     private void tab_ViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_ViewMouseClicked
         row = tab_View.getSelectedRow();
         this.showDetail(row);
         txt_IDStudent.disable();
+        txt_Email.disable();
     }//GEN-LAST:event_tab_ViewMouseClicked
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed

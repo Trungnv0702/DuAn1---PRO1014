@@ -7,6 +7,7 @@ package UI.Admin;
 
 import UI.Lecturers.Lecturers_ChangePassword_Form;
 import UI.Lecturers.Lecturers_Statistics_Form;
+import UI.Login_Form;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -123,6 +124,11 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/log-out.png"))); // NOI18N
         jMenuItem5.setText("Đăng xuất");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -238,7 +244,7 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        Lecturers_Statistics_Form Report = new Lecturers_Statistics_Form();
+        Admin_Statistics_Form Report = new Admin_Statistics_Form();
         jDesktopPane1.add(Report);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension jInternalFrameSize = Report.getSize();
@@ -247,6 +253,12 @@ public class Admin_Manage_Form extends javax.swing.JFrame {
         Report.setVisible(true);
         Report.show();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        this.dispose();
+        Login_Form lg = new Login_Form();
+        lg.show();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments

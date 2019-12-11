@@ -26,8 +26,18 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
     }
     ConnectDB connect = new ConnectDB();
     boolean isDelete = true;
-    
-    
+
+    public void DeleteLacture() {
+
+        String sql = "exec sp_removeGiangvien N'" + txt_IDLecturers.getText() + "'";
+        try {
+            connect.UpdateSQL(sql);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Lỗi xóa giang viên, Mã lỗi: " + e);
+        }
+
+    }
+
     public void loadDataToTable() {
         String head[] = {"Mã giảng viên", "Họ và tên", "Email/Tên người dùng", "Mật khẩu", "Số điện thoại", "Địa chỉ"};
         DefaultTableModel tablemodel = new DefaultTableModel(head, 0);
@@ -45,7 +55,7 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
         isDelete = false;
     }
 
-      public void showDetail(int row) {
+    public void showDetail(int row) {
         txt_IDLecturers.setText(Tab_view.getValueAt(row, 0).toString());
         txt_Name.setText(Tab_view.getValueAt(row, 1).toString());
         txt_email.setText(Tab_view.getValueAt(row, 2).toString());
@@ -53,7 +63,8 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
         txt_Numberphone.setText(Tab_view.getValueAt(row, 4).toString());
         txt_Address.setText(Tab_view.getValueAt(row, 5).toString());
     }
-     public boolean AddNewLacture() {
+
+    public boolean AddNewLacture() {
 
         if (txt_IDLecturers.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Không để trống mã giảng viên!");
@@ -79,6 +90,14 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Không đúng định dạng Email!");
             return false;
         }
+
+        for (int i = 0; i < Tab_view.getRowCount(); i++) {
+            if (txt_email.getText().equalsIgnoreCase(Tab_view.getValueAt(i, 2).toString())) {
+                JOptionPane.showMessageDialog(this, "Email đã tồn tại!");
+                return false;
+            }
+        }
+        
         if (txt_Password.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Không để trống Mật khẩu!");
             return false;
@@ -118,7 +137,6 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
         return true;
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -372,10 +390,12 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_NumberphoneActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
-        if(isDelete == true){
-        
+        if (isDelete == true) {
+            DeleteLacture();
+            this.loadDataToTable(); 
+            JOptionPane.showMessageDialog(this, "Xóa thành công!");
         } else {
-            
+
         }
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
@@ -389,11 +409,11 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
         this.loadDataToTable();
         txt_IDLecturers.setEditable(true);
         txt_IDLecturers.setBackground(Color.white);
-        
+
     }//GEN-LAST:event_btn_CleanActionPerformed
 
     private void btn_AddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddnewActionPerformed
-         if (this.AddNewLacture()) {
+        if (this.AddNewLacture()) {
             String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
             try {
                 connect.UpdateSQL(sql);
@@ -411,7 +431,7 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
         this.showDetail(row);
         txt_IDLecturers.setEditable(false);
         txt_IDLecturers.setBackground(Color.gray);
-        
+        isDelete = true;
     }//GEN-LAST:event_Tab_viewMouseClicked
 
 

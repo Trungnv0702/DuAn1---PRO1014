@@ -60,8 +60,6 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -204,15 +202,8 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem7);
-        jMenu3.add(jSeparator1);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/information.png"))); // NOI18N
-        jMenu4.setText("Hỗ trợ");
-        jMenu4.setFocusable(false);
-        jMenu4.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jMenuBar1.add(jMenu4);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/exittt.png"))); // NOI18N
         jMenu5.setText("Thoát");
@@ -391,7 +382,6 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
@@ -403,7 +393,6 @@ public class Lecturers_Manage_Main_Form extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JSeparator jSeparator5;

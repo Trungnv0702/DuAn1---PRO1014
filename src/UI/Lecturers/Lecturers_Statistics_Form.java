@@ -244,7 +244,7 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
                 excelJtableExport.close();
                 excelBOS.close();
 
-                JOptionPane.showMessageDialog(this, "SUCCESSFULLY");
+                JOptionPane.showMessageDialog(this, "Lưu thành công!");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);

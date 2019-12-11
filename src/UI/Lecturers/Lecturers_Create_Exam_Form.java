@@ -72,6 +72,12 @@ public class Lecturers_Create_Exam_Form extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Không bỏ trống mã kỳ thi");
                 return false;
             }
+            for (int i = 0; i < tbl_Exam.getRowCount(); i++) {
+                if (txt_makithi.getText().equalsIgnoreCase(tbl_Exam.getValueAt(i, 0).toString())) {
+                    JOptionPane.showMessageDialog(this, "Mã kì thi đã tồn tại!");
+                    return false;
+                }
+            }
             if (txt_makithi.getText().matches("[ ]+")) {
                 JOptionPane.showMessageDialog(this, "Không đúng định dạng mã kỳ thi!");
                 return false;
