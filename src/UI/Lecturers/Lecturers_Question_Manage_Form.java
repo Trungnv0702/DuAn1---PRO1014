@@ -1,11 +1,12 @@
 package UI.Lecturers;
 
 import DAO.ConnectDB;
+import DAO.Interface_Class;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
+public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame implements Interface_Class {
 
     public Lecturers_Question_Manage_Form() {
         initComponents();
@@ -93,7 +94,8 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
         }
     }
 
-    public void addNew() {
+    @Override
+    public void AddNew() {
         if (this.checkForm()) {
             try {
                 String sql = "exec sp_addCauhoi N'" + cbb_Subject.getSelectedItem().toString() + "' ,N'" + txt_ContentQuestion.getText() + "' , N'" + txt_Answer1.getText() + "',N'" + txt_Answer2.getText() + "',N'" + txt_Answer3.getText() + "',N'" + txt_CorrectAnswer.getText() + "'";
@@ -104,6 +106,7 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
         }
     }
 
+    @Override
     public void Update() {
         if (IDquestion == -1) {
             JOptionPane.showMessageDialog(this, "Chọn đói tượng cập nhât");
@@ -120,8 +123,8 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
             }
         }
     }
-
-    public void delete() {
+    @Override
+    public void Delete() {
         if (IDquestion == -1) {
             JOptionPane.showMessageDialog(this, "Chọn đói tượng cập nhât");
         } else {
@@ -329,7 +332,7 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_Update, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_AddQuestion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,8 +386,9 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
                                 .addComponent(btn_Clean)
-                                .addGap(26, 26, 26)
+                                .addGap(18, 18, 18)
                                 .addComponent(btn_delete)
                                 .addGap(27, 27, 27)
                                 .addComponent(btn_delete1))
@@ -405,7 +409,7 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddQuestionActionPerformed
-        this.addNew();
+        this.AddNew();
     }//GEN-LAST:event_btn_AddQuestionActionPerformed
 
     private void btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateActionPerformed
@@ -414,13 +418,13 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_UpdateActionPerformed
 
     private void btn_CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CleanActionPerformed
-        // TODO add your handling code here:
+        this.CleanForm();
     }//GEN-LAST:event_btn_CleanActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
 
-        this.delete();
+        this.Delete();
 
 
     }//GEN-LAST:event_btn_deleteActionPerformed
@@ -474,4 +478,18 @@ public class Lecturers_Question_Manage_Form extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea txt_ContentQuestion;
     private javax.swing.JTextArea txt_CorrectAnswer;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void CleanForm() {
+        txt_Answer1.setText("");
+        txt_Answer2.setText("");
+        txt_Answer3.setText("");
+        txt_ContentQuestion.setText("");
+        txt_CorrectAnswer.setText("");
+    }
+
+    @Override
+    public void LoadDataToTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

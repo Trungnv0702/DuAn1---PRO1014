@@ -6,6 +6,7 @@
 package UI.Lecturers;
 
 import DAO.ConnectDB;
+import DAO.Interface_Class;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author trung
  */
-public class Lecturers_Class_Management_Form extends javax.swing.JInternalFrame {
+public class Lecturers_Class_Management_Form extends javax.swing.JInternalFrame implements Interface_Class {
 
     /**
      * Creates new form Lecturers_Subject_Management_Form
@@ -104,6 +105,11 @@ public class Lecturers_Class_Management_Form extends javax.swing.JInternalFrame 
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btn_addnew.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btn_addnew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/add-file (1).png"))); // NOI18N
@@ -184,15 +190,12 @@ public class Lecturers_Class_Management_Form extends javax.swing.JInternalFrame 
 
     private void btn_addnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addnewActionPerformed
         // TODO add your handling code here:
-        if (this.checkForm()) {
-            try {
-                String sql = "exec sp_addLop N'" + txt_malop.getText() + "',N'" + txt_tenlop.getText() + "'";
-                connect.UpdateSQL(sql);
-                loadToTable();
-            } catch (Exception e) {
-            }
-        }
+        this.AddNew();
     }//GEN-LAST:event_btn_addnewActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,4 +208,36 @@ public class Lecturers_Class_Management_Form extends javax.swing.JInternalFrame 
     private javax.swing.JTextField txt_malop;
     private javax.swing.JTextField txt_tenlop;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void AddNew() {
+        if (this.checkForm()) {
+            try {
+                String sql = "exec sp_addLop N'" + txt_malop.getText() + "',N'" + txt_tenlop.getText() + "'";
+                connect.UpdateSQL(sql);
+                loadToTable();
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    @Override
+    public void Delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void CleanForm() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void LoadDataToTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

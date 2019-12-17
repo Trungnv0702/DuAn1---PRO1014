@@ -6,6 +6,7 @@
 package UI.Lecturers;
 
 import DAO.ConnectDB;
+import DAO.Interface_Class;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author TrinhNgocQuang
  */
-public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
+public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame{
 
     public Lecturers_Statistics_Form() {
         initComponents();
@@ -264,4 +265,5 @@ public class Lecturers_Statistics_Form extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_View;
     // End of variables declaration//GEN-END:variables
+
 }

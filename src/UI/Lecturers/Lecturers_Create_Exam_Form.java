@@ -6,6 +6,7 @@
 package UI.Lecturers;
 
 import DAO.ConnectDB;
+import DAO.Interface_Class;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author trung
  */
-public class Lecturers_Create_Exam_Form extends javax.swing.JInternalFrame {
+public class Lecturers_Create_Exam_Form extends javax.swing.JInternalFrame implements Interface_Class {
 
     /**
      * Creates new form Lecturers_Create_Exam_Form
@@ -250,29 +251,15 @@ public class Lecturers_Create_Exam_Form extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_addnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addnewActionPerformed
-        // TODO add your handling code here:
-        if (this.checkForm()) {
-            try {
-                String sql = "exec sp_addKithi N'" + txt_makithi.getText() + "',N'" + txt_tenkithi.getText() + "',N'" + cbb_subject.getSelectedItem() + "',N'" + magiangvien + "'";
-                connect.UpdateSQL(sql);
-                this.loadDataTotable();
-            } catch (Exception e) {
-            }
-        }
+        this.AddNew();
     }//GEN-LAST:event_btn_addnewActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btn_exitActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
-        // TODO add your handling code here:
-        try {
-            String sql = "exec sp_removeKithi N'" + txt_makithi.getText() + "'";
-            connect.UpdateSQL(sql);
-            loadDataTotable();
-        } catch (Exception e) {
-        }
+        this.Delete();
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
     private void tbl_ExamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ExamMouseClicked
@@ -301,4 +288,43 @@ public class Lecturers_Create_Exam_Form extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_makithi;
     private javax.swing.JTextField txt_tenkithi;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void AddNew() {
+        // TODO add your handling code here:
+        if (this.checkForm()) {
+            try {
+                String sql = "exec sp_addKithi N'" + txt_makithi.getText() + "',N'" + txt_tenkithi.getText() + "',N'" + cbb_subject.getSelectedItem() + "',N'" + magiangvien + "'";
+                connect.UpdateSQL(sql);
+                this.loadDataTotable();
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    @Override
+    public void Delete() {
+        // TODO add your handling code here:
+        try {
+            String sql = "exec sp_removeKithi N'" + txt_makithi.getText() + "'";
+            connect.UpdateSQL(sql);
+            loadDataTotable();
+        } catch (Exception e) {
+        }
+    }
+
+    @Override
+    public void CleanForm() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void LoadDataToTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

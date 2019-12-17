@@ -6,6 +6,7 @@
 package UI.Admin;
 
 import DAO.ConnectDB;
+import DAO.Interface_Class;
 import java.awt.Color;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author admin
  */
-public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
+public class Admin_Manager_Lectures extends javax.swing.JInternalFrame implements Interface_Class {
 
     /**
      * Creates new form Admin_Manager_Lectures
@@ -135,40 +136,6 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
             }
         }
         return true;
-    }
-
-    public void addNew() {
-        if (this.AddNewLacture()) {
-            String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
-            try {
-                connect.UpdateSQL(sql);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1, Lỗi chi tiết: " + e);
-            }
-        }
-        this.loadDataToTable();
-    }
-
-    public void isDelete() {
-        if (isDelete == true) {
-            DeleteLacture();
-            this.loadDataToTable();
-            JOptionPane.showMessageDialog(this, "Xóa thành công!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Thao tác sai!");
-        }
-    }
-
-    public void Clean() {
-        txt_Address.setText("");
-        txt_IDLecturers.setText("");
-        txt_Name.setText("");
-        txt_Numberphone.setText("");
-        txt_Password.setText("");
-        txt_email.setText("");
-        this.loadDataToTable();
-        txt_IDLecturers.setEditable(true);
-        txt_IDLecturers.setBackground(Color.white);
     }
 
     /**
@@ -424,16 +391,16 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_NumberphoneActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
-        isDelete();
+        Delete();
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
     private void btn_CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CleanActionPerformed
-        this.Clean();
+        this.CleanForm();
 
     }//GEN-LAST:event_btn_CleanActionPerformed
 
     private void btn_AddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddnewActionPerformed
-        this.addNew();
+        this.AddNew();
 
     }//GEN-LAST:event_btn_AddnewActionPerformed
 
@@ -470,4 +437,53 @@ public class Admin_Manager_Lectures extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_Password;
     private javax.swing.JTextField txt_email;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void AddNew() {
+        if (this.AddNewLacture()) {
+            String sql = "exec sp_addGiangvien N'" + txt_IDLecturers.getText() + "', N'" + txt_Name.getText() + "', N'" + txt_Numberphone.getText() + "', N'" + txt_Address.getText() + "', N'" + txt_email.getText() + "', N'" + txt_Password.getText() + "', N'giangvien' ";
+            try {
+                connect.UpdateSQL(sql);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Thêm giải giảng viên lỗi, mã lỗi: 1, Lỗi chi tiết: " + e);
+            }
+        }
+        this.loadDataToTable();
+
+    }
+
+    @Override
+    public void Delete() {
+        if (isDelete == true) {
+            DeleteLacture();
+            this.loadDataToTable();
+            JOptionPane.showMessageDialog(this, "Xóa thành công!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Thao tác sai!");
+        }
+    }
+
+    @Override
+    public void Update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void LoadDataToTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void CleanForm() {
+        txt_Address.setText("");
+        txt_IDLecturers.setText("");
+        txt_Name.setText("");
+        txt_Numberphone.setText("");
+        txt_Password.setText("");
+        txt_email.setText("");
+        this.loadDataToTable();
+        txt_IDLecturers.setEditable(true);
+        txt_IDLecturers.setBackground(Color.white);
+
+    }
 }

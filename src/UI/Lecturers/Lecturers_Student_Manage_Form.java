@@ -1,11 +1,12 @@
 package UI.Lecturers;
 
 import DAO.ConnectDB;
+import DAO.Interface_Class;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
+public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame implements Interface_Class {
 
     public Lecturers_Student_Manage_Form() {
         initComponents();
@@ -216,7 +217,8 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
 
     }
 
-    public void addNew() {
+    @Override
+    public void AddNew() {
         if (this.checkFormAddNew()) {
             try {
                 String sql = "exec sp_addSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "','Sinhvien'";
@@ -228,6 +230,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
         this.loadToTable();
     }
 
+    @Override
     public void Update() {
         if (this.checkFormUpdate()) {
             String sql = "exec sp_updateSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "'";
@@ -475,7 +478,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_FullNameActionPerformed
 
     private void btn_AddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddnewActionPerformed
-        this.addNew();
+        this.AddNew();
     }//GEN-LAST:event_btn_AddnewActionPerformed
 
     private void txt_IDStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IDStudentActionPerformed
@@ -483,15 +486,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_IDStudentActionPerformed
 
     private void txt_cleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cleanActionPerformed
-        txt_Address.setText("");
-        txt_Email.setText("");
-        txt_FullName.setText("");
-        txt_IDStudent.setText("");
-        txt_Major.setText("");
-        txt_Password.setText("");
-        txt_SchoolYear.setText("");
-        txt_IDStudent.enable();
-        txt_Email.enable();
+       this.CleanForm();
     }//GEN-LAST:event_txt_cleanActionPerformed
 
     private void tab_ViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_ViewMouseClicked
@@ -502,13 +497,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tab_ViewMouseClicked
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
-        if (txt_IDStudent.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Chọn một đối tượng để xóa!");
-            return;
-        }
-        this.deleteStudent();
-        this.loadToTable();
-        txt_IDStudent.enable();
+       this.Delete();
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
     private void btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateActionPerformed
@@ -540,4 +529,33 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_SchoolYear;
     private javax.swing.JButton txt_clean;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Delete() {
+        if (txt_IDStudent.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Chọn một đối tượng để xóa!");
+            return;
+        }
+        this.deleteStudent();
+        this.loadToTable();
+        txt_IDStudent.enable();
+    }
+
+    @Override
+    public void CleanForm() {
+        txt_Address.setText("");
+        txt_Email.setText("");
+        txt_FullName.setText("");
+        txt_IDStudent.setText("");
+        txt_Major.setText("");
+        txt_Password.setText("");
+        txt_SchoolYear.setText("");
+        txt_IDStudent.enable();
+        txt_Email.enable();
+    }
+
+    @Override
+    public void LoadDataToTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
