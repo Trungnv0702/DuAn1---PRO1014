@@ -42,9 +42,10 @@ public class ChaoJDialog extends javax.swing.JDialog {
         ProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(805, 410));
-        setMinimumSize(new java.awt.Dimension(805, 410));
-        setPreferredSize(new java.awt.Dimension(791, 410));
+        setMaximumSize(new java.awt.Dimension(795, 415));
+        setMinimumSize(new java.awt.Dimension(795, 415));
+        setPreferredSize(new java.awt.Dimension(795, 415));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_Icon/source.gif"))); // NOI18N

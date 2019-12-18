@@ -84,7 +84,7 @@ public class Login_Form extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi" + e);
+            e.printStackTrace();
             return false;
         }
     }

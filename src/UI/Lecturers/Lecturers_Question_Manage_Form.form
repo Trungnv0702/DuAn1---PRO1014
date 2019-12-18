@@ -50,35 +50,43 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" alignment="0" min="-2" pref="323" max="-2" attributes="0"/>
+              <EmptySpace pref="132" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane4" min="-2" pref="323" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btn_Update" min="-2" pref="88" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="366" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane3" alignment="0" min="-2" pref="323" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane5" alignment="0" min="-2" pref="323" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" alignment="0" min="-2" pref="323" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="btn_Clean" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="btn_AddQuestion" min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="btn_delete" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="btn_delete1" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" min="-2" pref="323" max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" min="-2" pref="323" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="323" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="128" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btn_Update" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="btn_AddQuestion" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="btn_Clean" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="btn_delete" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="btn_delete1" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -93,10 +101,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel6" min="-2" pref="26" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="cbb_Subject" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -115,50 +120,39 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                              <Component id="jScrollPane4" min="-2" pref="54" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="btn_AddQuestion" min="-2" pref="59" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" pref="54" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="btn_Update" min="-2" pref="54" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane5" min="-2" pref="54" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="btn_Clean" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_delete" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="btn_delete1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" min="-2" pref="54" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="54" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="54" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btn_Update" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btn_Clean" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btn_AddQuestion" min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btn_delete" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btn_delete1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane6" min="-2" pref="174" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="jScrollPane6" pref="170" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -277,7 +271,7 @@
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="9">
+              <Table columnCount="7" rowCount="3">
                 <Column editable="true" title="M&#xe3; c&#xe2;u h&#x1ecf;i" type="java.lang.Object"/>
                 <Column editable="true" title="M&#xf4;n" type="java.lang.Object"/>
                 <Column editable="false" title="M&#xf4; t&#x1ea3; c&#xe2;u h&#x1ecf;i" type="java.lang.Object"/>

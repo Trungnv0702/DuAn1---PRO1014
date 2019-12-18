@@ -15,7 +15,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
         this.setTitle("Quản lý sinh viên");
     }
 
-    String ReMail = "\\w+@+\\w+(\\.\\w+){1,2}";
+    String ReMail = "\\w+@\\w+(\\.\\w+){1,2}";
     ConnectDB connect = new ConnectDB();
     int row = -1;
 
@@ -108,14 +108,9 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
                     return false;
                 }
             }
-            if (!txt_IDStudent.getText().equals("") || !txt_FullName.getText().equals("") || !txt_Email.getText().equals("") || txt_Email.getText().matches(ReMail)
-                    || !txt_Password.getText().equals("") || !txt_SchoolYear.getText().equals("") || !txt_Major.getText().equals("") || !txt_Address.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Thêm thành công !");
-            } else {
-                JOptionPane.showMessageDialog(this, "Thất bại !");
-            }
+            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+            JOptionPane.showMessageDialog(this,e);
         }
         return true;
     }
@@ -189,7 +184,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
     }
 
     public void loadDataToCombobox() {
-        String sql = "select Tenlop from Lop";
+        String sql = "select Malop from Lop";
         try {
             ResultSet rs = connect.querySQL(sql);
             while (rs.next()) {
@@ -212,7 +207,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
             }
             tab_View.setModel(tablemodel);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi load Combobox" + e);
+            e.printStackTrace();
         }
 
     }
@@ -223,11 +218,15 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
             try {
                 String sql = "exec sp_addSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "','Sinhvien'";
                 connect.UpdateSQL(sql);
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Thêm sinh viên thất bại!" + e);
             }
+             this.loadToTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm sinh viên thất bạii" );
         }
-        this.loadToTable();
+       
     }
 
     @Override
@@ -259,7 +258,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
         txt_Major = new javax.swing.JTextField();
         txt_SchoolYear = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cbb_Class = new javax.swing.JComboBox<>();
+        cbb_Class = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tab_View = new javax.swing.JTable();
         btn_Delete = new javax.swing.JButton();
@@ -437,9 +436,9 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
                                 .addComponent(jLabel1)))
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(49, 49, 49)
                         .addComponent(btn_Addnew)
-                        .addGap(30, 30, 30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_Update)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -463,7 +462,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(txt_clean)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addComponent(btn_Delete)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
