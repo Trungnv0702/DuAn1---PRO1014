@@ -92,7 +92,7 @@ public class Lecturers_Create_Exam_Form extends javax.swing.JInternalFrame imple
                 return false;
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+           
         }
         return true;
     }
@@ -296,9 +296,13 @@ public class Lecturers_Create_Exam_Form extends javax.swing.JInternalFrame imple
             try {
                 String sql = "exec sp_addKithi N'" + txt_makithi.getText() + "',N'" + txt_tenkithi.getText() + "',N'" + cbb_subject.getSelectedItem() + "',N'" + magiangvien + "'";
                 connect.UpdateSQL(sql);
+                JOptionPane.showMessageDialog(this,"thêm thành công");
                 this.loadDataTotable();
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,"thêm thất bại");
             }
+        } else {
+            JOptionPane.showMessageDialog(this,"thêm thất bại");
         }
     }
 
@@ -309,7 +313,10 @@ public class Lecturers_Create_Exam_Form extends javax.swing.JInternalFrame imple
             String sql = "exec sp_removeKithi N'" + txt_makithi.getText() + "'";
             connect.UpdateSQL(sql);
             loadDataTotable();
+            JOptionPane.showMessageDialog(this,"xóa thành công");
         } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(this,"xóa thất bại");
         }
     }
 

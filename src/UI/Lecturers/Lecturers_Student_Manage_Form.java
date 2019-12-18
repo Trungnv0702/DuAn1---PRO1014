@@ -218,7 +218,7 @@ public class Lecturers_Student_Manage_Form extends javax.swing.JInternalFrame im
             try {
                 String sql = "exec sp_addSinhvien N'" + txt_IDStudent.getText() + "',N'" + txt_FullName.getText() + "',N'" + txt_Email.getText() + "',N'" + cbb_Class.getSelectedItem().toString() + "',N'" + txt_SchoolYear.getText() + "',N'" + txt_Major.getText() + "',N'" + txt_Address.getText() + "',N'" + txt_Password.getText() + "','Sinhvien'";
                 connect.UpdateSQL(sql);
-                
+                JOptionPane.showMessageDialog(this,"Thêm thành công");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Thêm sinh viên thất bại!" + e);
             }
